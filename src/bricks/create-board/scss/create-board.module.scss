@@ -1,0 +1,16 @@
+.createBoard{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .createBoardRow{
+    width: 1000px;
+    height: 200px;
+    header{
+      margin: 20px 0 0 30px;
+      h2{
+        font-size: 40px;
+        color: #333333;
+      }
+    }
+  }
+}
