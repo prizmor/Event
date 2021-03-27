@@ -1,11 +1,11 @@
 import React from 'react';
-import s from './scss/topBar.module.scss';
+import s from './header.module.scss';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import { grey } from '@material-ui/core/colors';
 import {Link} from "react-router-dom";
 
-let TopBar = (props) => {
+let Header = (props) => {
   return (
     <div className={s.topBar}>
       <div className={s.home}>
@@ -24,4 +24,4 @@ let TopBar = (props) => {
   )
 };
 
-export default TopBar;
+export default Header;

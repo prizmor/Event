@@ -1,11 +1,12 @@
-import { combineReducers, createStore } from "redux";
-import { reducer as formReducer } from 'redux-form'
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import thunkMiddleware from "redux-thunk";
+import Board from "./boardReducer";
 
 let reducers = combineReducers({
-  form: formReducer
+  Board: Board
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store;
 
