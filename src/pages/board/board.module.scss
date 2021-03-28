@@ -1,0 +1,45 @@
+.board{
+  height: 100vh;
+}
+.header{
+  position: fixed;
+  z-index: 10000;
+  top: 48px;
+  width: 100vw;
+  height: 32px;
+  background: #5300ca;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .name{
+    color: white;
+    margin-left: 5px;
+    font-size: 20px;
+  }
+  .settingsButton{
+    margin-right: 5px;
+  }
+}
+.settings{
+  min-height: 720px;
+  min-width: 580px;
+  z-index: 10001;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .windowSettings{
+    width: 500px;
+    height: 600px;
+    border-radius: 10px;
+    background: white;
+    .close{
+      position: absolute;
+      top: 190px;
+      left: 1180px;
+    }
+  }
+}

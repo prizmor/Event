@@ -2,31 +2,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 48px;
   .createBoardRow{
-    header{
-      display: flex;
-      justify-content: center;
-      h2{
-        margin-top: 20px;
-        font-size: 40px;
-        color: #333333;
-      }
-    }
-    .nameBoard{
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-    }
-    .colorBoard{
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      .color{
-        border: 1px solid black;
-      }
-    }
-    .submit{
-      margin-top: 20px;
-    }
+
   }
 }

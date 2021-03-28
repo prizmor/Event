@@ -5,7 +5,7 @@ import Board from "./components/board";
 
 let Home = (props) => {
 
-  debugger
+
 
   let boards = props.boards.map(b => <Board color={b.color} name={b.name} key={b.id} />)
 

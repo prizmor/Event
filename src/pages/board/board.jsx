@@ -1,12 +1,12 @@
-import React from 'react';
-import s from '../home.module.scss';
-import Button from '@material-ui/core/Button';
-import {Link} from "react-router-dom";
+import React, {useState} from 'react';
+import s from './board.module.scss';
+import Header from "./components/header";
+import Settings from "./components/settings";
 
 let Board = (props) => {
 
   let color = () => {
-    switch (props.color) {
+    switch (props.board.color) {
       case "white": {
         return "#ffffff"
       }
@@ -38,13 +38,13 @@ let Board = (props) => {
     }
   }
 
+
+
+  let [settings, openSettings] = useState(false)
   return (
-    <div className={s.board}>
-      <Link to={"board/" + props.name} style={{textDecoration: "none"}}>
-        <Button variant="contained" style={{maxWidth: '300px', maxHeight: '200px', minWidth: '300px', minHeight: '200px', background: color()}}>
-          {props.name}
-        </Button>
-      </Link>
+    <div className={s.board} style={{background: color()}}>
+      <Header openSettings={openSettings} name={props.board.name} />
+      {settings && <Settings openSettings={openSettings} names={props.names} submit={props.onSubmit} />}
     </div>
   )
 };

@@ -1,9 +1,12 @@
 import React from 'react';
 import {connect} from "react-redux";
 import CreateBoard from "./createBoard";
-import {createBoard} from "../../redux/boardReducer";
+import Board, {createBoard} from "../../redux/boardReducer";
+import {useHistory} from "react-router-dom";
 
 let CreateBoardContainer = (props) => {
+
+  const history = useHistory();
 
   let submit = (data) => {
 
@@ -13,16 +16,17 @@ let CreateBoardContainer = (props) => {
       dataBoard.color = "white"
     }
     props.createBoard(dataBoard)
+    history.push('/')
   }
 
   return (
-    <CreateBoard props={props} submit={submit} />
+    <CreateBoard {...props} submit={submit} />
   );
 };
 
 let mapStateToProps = (state) =>{
   return {
-
+    boards: state.Board.PresentBoards
   }
 };
 
