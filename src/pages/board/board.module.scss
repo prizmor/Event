@@ -1,5 +1,7 @@
 .board{
-  height: 100vh;
+  height: 979px;
+  width: 1920px;
+  min-height: 550px;
 }
 .header{
   position: fixed;
@@ -21,13 +23,14 @@
   }
 }
 .settings{
-  min-height: 720px;
-  min-width: 580px;
-  z-index: 10001;
-  width: 100vw;
-  height: 100vh;
+  z-index: 100001;
+  height: 979px;
+  width: 1920px;
+  min-height: 700px;
+  min-width: 700px;
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,9 +40,83 @@
     border-radius: 10px;
     background: white;
     .close{
-      position: absolute;
-      top: 190px;
-      left: 1180px;
+      margin-left: 470px;
+    }
+  }
+}
+
+.table{
+  width: 100vw;
+  height: calc(100vh - 80px);
+  padding-top: 80px;
+ .column{
+   width: 296px;
+   background: #ebecf0;
+   margin: 10px;
+   border-radius: 4px;
+   padding: 4px 6px;
+   display: inline-flex;
+   align-self: flex-start;
+   .wrapper{
+     width: 100%;
+     .headerColumn{
+       display: flex;
+       justify-content: space-between;
+       height: 30px;
+       align-items: center;
+       width: 100%;
+       .name{
+         margin: 5px;
+         color: #000c48;
+       }
+       .delete{
+         display: none;
+       }
+     }
+     .body{
+       .taskc{
+         display: flex;
+         justify-content: space-between;
+         width: 100%;
+         min-height: 30px;
+         background: white;
+         border-bottom: 0.4px solid rgba(0, 0, 0, 0.4);
+         margin: 10px 0;
+         border-radius: 3px;
+         box-sizing: border-box;
+         padding: 5px;
+         .tags{
+           max-height: 20px;
+           box-sizing: border-box;
+           width: 100%;
+         }
+         .close{
+           display: flex;
+           align-items: center;
+           width: 16px;
+           .button{
+             display: none;
+           }
+         }
+         .text{
+
+         }
+       }
+       .taskc:hover{
+         .close{
+           .button{
+             display: block;
+           }
+         }
+       }
+     }
+   }
+ }
+  .column:hover{
+    .headerColumn{
+      .delete{
+        display: block;
+      }
     }
   }
 }

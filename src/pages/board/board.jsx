@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import s from './board.module.scss';
 import Header from "./components/header";
 import Settings from "./components/settings";
+import Table from "./components/table";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
 let Board = (props) => {
 
@@ -44,6 +47,9 @@ let Board = (props) => {
   return (
     <div className={s.board} style={{background: color()}}>
       <Header openSettings={openSettings} name={props.board.name} />
+      <DndProvider backend={HTML5Backend}>
+        <Table board={props.board} />
+      </DndProvider>
       {settings && <Settings openSettings={openSettings} names={props.names} submit={props.onSubmit} />}
     </div>
   )
