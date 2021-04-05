@@ -8,6 +8,8 @@ import { DndProvider } from 'react-dnd'
 
 let Board = (props) => {
 
+
+
   let color = () => {
     switch (props.board.color) {
       case "white": {
@@ -48,9 +50,9 @@ let Board = (props) => {
     <div className={s.board} style={{background: color()}}>
       <Header openSettings={openSettings} name={props.board.name} />
       <DndProvider backend={HTML5Backend}>
-        <Table board={props.board} />
+        <Table board={props.board} onSubmitDescription={props.onSubmitDescription} />
       </DndProvider>
-      {settings && <Settings openSettings={openSettings} names={props.names} submit={props.onSubmit} />}
+      {settings && <Settings openSettings={openSettings} names={props.names} submit={props.onSubmitSettings} />}
     </div>
   )
 };

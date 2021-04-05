@@ -1,48 +1,26 @@
 import React, {useState} from "react";
 import s from './../board.module.scss';
 import Column from "./colum";
+import TaskSettings from "./taskSettings";
+import _ from "lodash"
 
 let Table = (props) => {
 
-    let [state, setState] = useState([
-      {
-        name: "falas",
-        id: "1",
-        items: [
-          {
-            id: "1",
-            text: "hello word"
-          },
-          {
-            id: "2",
-            text: "hello word 2"
-          }
-        ]
-      },
-      {
-        name: "falass",
-        id: "2",
-        items: [
-          {
-            id: "3",
-            text: "hello word 3"
-          },
-          {
-            id: "4",
-            text: "hello word 4"
-          }
-        ]
-      }
-    ])
+    let [taskSettings, setTaskSettings] = useState(
+        {
+            windowOpen: false, column: "", index: ""
+        }
+    )
+
 
     return(
       <div className={s.table}>
-        {state.map(data => {
-
+        {_.map(props.board.stages ,(data, key) => {
           return (
-            <Column key={data.id} data={data} />
+            <Column setTaskSettings={setTaskSettings} key={key} name={key} data={data} />
           )
         })}
+          {taskSettings.windowOpen && <TaskSettings setTaskSettings={setTaskSettings} onSubmitDescription={props.onSubmitDescription} board={props.board} taskSettings={taskSettings} />}
       </div>
     )
 

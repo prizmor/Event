@@ -55,7 +55,60 @@ export let createBoard = (data) => (dispatch) => {
     id: PresentBoards.boards[PresentBoards.boards.length-1].id,
     color: data.color,
     countStages: 0,
-    stages:[]
+    stages:{
+      "test-1": {
+        task:[
+          {
+            id: "1",
+            text: "Создать настройки задания",
+            description: ""
+          },
+          {
+            id: "2",
+            text: "Равным образом консультация с",
+            description: ""
+          },
+          {
+            id: "3",
+            text: "Значимость этих проблем настолько очевидна, что дальнейшее развитие различных форм",
+            description: "",
+            checkList: [
+              {
+                performed: false,
+                content: "Значимость этих проблем"
+              },
+              {
+                performed: false,
+                content: "что дальнейшее развитие"
+              },
+              {
+                performed: false,
+                content: "Равным образом"
+              }
+            ]
+          }
+        ]
+      },
+      "test-2": {
+        task:[
+          {
+            id: "4",
+            text: "Дорогие друзья, начало повседневной работы по формированию позиции позволяет выполнить важнейшие задания по разработке направлений прогрессивного развития!",
+            description: ""
+          },
+          {
+            id: "5",
+            text: "Практический опыт показывает, что курс на социально-ориентированный национальный проект обеспечивает широкому кругу специалистов участие в формировании дальнейших направлений развития проекта",
+            description: ""
+          },
+          {
+            id: "6",
+            text: "Задача организации, в особенности же новая модель организационной деятельности в значительной степени обуславливает создание модели развития",
+            description: ""
+          }
+        ]
+      }
+    }
   }
   set(data.name, templateBoard);
   dispatch(presentBoards(get('PresentBoards')))
@@ -85,4 +138,12 @@ export let setSettings = (value, name) => (dispatch) => {
   PresentBoards.boards[Board.id-1].color = value.color
   set('PresentBoards', PresentBoards);
   dispatch(presentBoards(get('PresentBoards')))
+}
+
+export let setDescription = (board, column, index, text) => (dispatch) =>{
+  debugger
+  let Board = get(board.name)
+  Board.stages[column].task[index].description = text
+  set(board.name, Board);
+  dispatch(setBoard(Board))
 }

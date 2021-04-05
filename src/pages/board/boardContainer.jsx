@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import Board from "./board";
-import {SetBoard, setSettings} from "../../redux/boardReducer";
+import {SetBoard, setDescription, setSettings} from "../../redux/boardReducer";
 import {useHistory} from "react-router-dom";
 
 let BoardContainer = (props) => {
@@ -12,16 +12,19 @@ let BoardContainer = (props) => {
 
   useEffect(() => {
     props.SetBoard(props.match.params.name)
-    console.log("1")
   }, [props.match.params.name])
 
-  let onSubmit = (value) => {
+  let onSubmitSettings = (value) => {
     props.setSettings(value, props.board.name)
     history.push('/board/' + value.name)
   }
 
+  let onSubmitDescription = (text, index, column) => {
+    props.setDescription(props.board, column, index, text)
+  }
+
   return(
-    <Board board={props.board} names={props.names} onSubmit={onSubmit} />
+    <Board board={props.board} names={props.names} onSubmitDescription={onSubmitDescription} onSubmitSettings={onSubmitSettings} />
     )
 }
 
@@ -35,5 +38,5 @@ let mapStateToProps = (state) => {
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, {SetBoard, setSettings})
+  connect(mapStateToProps, {SetBoard, setSettings, setDescription})
 )(BoardContainer)
