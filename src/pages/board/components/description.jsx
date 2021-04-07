@@ -10,12 +10,12 @@ let Description = (props) => {
 
     return (
         <div className={s.description}>
-            <h2>
+            <h2 className={s.label}>
                 Изменения описания
             </h2>
             <form onSubmit={handleSubmit(props.submit)}>
                 <TextField
-                    inputRef={register({ required: true, maxLength: "750" })}
+                    inputRef={register({maxLength: "750" })}
                     label={"Описание"}
                     name={"description"}
                     multiline

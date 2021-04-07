@@ -10,36 +10,66 @@ let Board = (props) => {
 
 
 
-  let color = () => {
-    switch (props.board.color) {
+  let color = (color) => {
+    switch (color) {
       case "white": {
-        return "#ffffff"
+        return {
+            background: "#ffffff",
+            color: "black"
+        }
       }
       case "pink": {
-        return "#e91e63"
+        return {
+            background: "#e91e63",
+            color: "white"
+        }
       }
       case "purple": {
-        return "#9c27b0"
+        return {
+            background: "#9c27b0",
+            color: "white"
+        }
       }
       case "indigo": {
-        return "#3f51b5"
+        return {
+            background: "#3f51b5",
+            color: "white"
+        }
       }
       case "blue": {
-        return "#2196f3"
+        return {
+            background: "#2196f3",
+            color: "white"
+        }
       }
       case "lightBlue": {
-        return "#03a9f4"
+        return {
+            background: "#03a9f4",
+            color: "white"
+        }
       }
       case "teal": {
-        return "#009688"
+        return {
+            background: "#009688",
+            color: "white"
+        }
       }
       case "green": {
-        return "#4caf50"
+        return {
+            background: "#4caf50",
+            color: "white"
+        }
       }
       case "lightGreen": {
-        return "#8bc34a"
+        return {
+            background: "#8bc34a",
+            color: "white"
+        }
       }
-      default: return "#ffffff"
+      default: return {
+          background: "#ffffff",
+          color: "black"
+      }
     }
   }
 
@@ -47,12 +77,12 @@ let Board = (props) => {
 
   let [settings, openSettings] = useState(false)
   return (
-    <div className={s.board} style={{background: color()}}>
+    <div className={s.board} style={{background: color(props.board.color).background}}>
       <Header openSettings={openSettings} name={props.board.name} />
       <DndProvider backend={HTML5Backend}>
-        <Table board={props.board} onSubmitDescription={props.onSubmitDescription} />
+        <Table board={props.board} color={color} deleteTag={props.deleteTag} onSubmitTags={props.onSubmitTags} onSubmitDescription={props.onSubmitDescription} />
       </DndProvider>
-      {settings && <Settings openSettings={openSettings} names={props.names} submit={props.onSubmitSettings} />}
+      {settings && <Settings onSubmitTags={props.onSubmitTags} openSettings={openSettings} names={props.names} submit={props.onSubmitSettings} />}
     </div>
   )
 };

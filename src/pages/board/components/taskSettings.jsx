@@ -17,11 +17,18 @@ let TaskSettings = (props) => {
 
     useEffect(() => {
         setState(props.board.stages[props.taskSettings.column].task[props.taskSettings.index])
-    }, [props.taskSettings])
+    }, [props.taskSettings, props.board.stages[props.taskSettings.column].task[props.taskSettings.index]])
 
     let onSubmitDescription = (text) => {
-
         props.onSubmitDescription(text.description, props.taskSettings.index, props.taskSettings.column)
+    }
+
+    let onSubmitTags = (data) => {
+        props.onSubmitTags(data, props.taskSettings.index, props.taskSettings.column)
+    }
+
+    let deleteTag = (index) => {
+        props.deleteTag(props.taskSettings.column, props.taskSettings.index, index)
     }
 
     return (
@@ -33,8 +40,8 @@ let TaskSettings = (props) => {
                             {state.text}
                         </span>
                         <div className={s.mainContent}>
-                            {page === "home" && <Home />}
-                            {page === "tags" && <Tags />}
+                            {page === "home" && <Home task={state} color={props.color} setPage={setPage} />}
+                            {page === "tags" && <Tags deleteTag={deleteTag} onSubmit={onSubmitTags} tags={state.tags} color={props.color} />}
                             {page === "checkList" && <CheckList />}
                             {page === "time" && <Time />}
                             {page === "description" && <Description submit={onSubmitDescription} description={state.description} />}

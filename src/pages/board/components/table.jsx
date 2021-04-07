@@ -20,7 +20,7 @@ let Table = (props) => {
             <Column setTaskSettings={setTaskSettings} key={key} name={key} data={data} />
           )
         })}
-          {taskSettings.windowOpen && <TaskSettings setTaskSettings={setTaskSettings} onSubmitDescription={props.onSubmitDescription} board={props.board} taskSettings={taskSettings} />}
+          {taskSettings.windowOpen && <TaskSettings color={props.color} deleteTag={props.deleteTag} onSubmitTags={props.onSubmitTags} setTaskSettings={setTaskSettings} onSubmitDescription={props.onSubmitDescription} board={props.board} taskSettings={taskSettings} />}
       </div>
     )
 

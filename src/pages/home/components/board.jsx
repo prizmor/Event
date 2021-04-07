@@ -4,44 +4,73 @@ import Button from '@material-ui/core/Button';
 import {Link} from "react-router-dom";
 
 let Board = (props) => {
-
-  let color = () => {
-    switch (props.color) {
+  let colors = (color) => {
+    switch (color) {
       case "white": {
-        return "#ffffff"
+        return {
+          background: "#ffffff",
+          color: "black"
+        }
       }
       case "pink": {
-        return "#e91e63"
+        return {
+          background: "#e91e63",
+          color: "white"
+        }
       }
       case "purple": {
-        return "#9c27b0"
+        return {
+          background: "#9c27b0",
+          color: "white"
+        }
       }
       case "indigo": {
-        return "#3f51b5"
+        return {
+          background: "#3f51b5",
+          color: "white"
+        }
       }
       case "blue": {
-        return "#2196f3"
+        return {
+          background: "#2196f3",
+          color: "white"
+        }
       }
       case "lightBlue": {
-        return "#03a9f4"
+        return {
+          background: "#03a9f4",
+          color: "white"
+        }
       }
       case "teal": {
-        return "#009688"
+        return {
+          background: "#009688",
+          color: "white"
+        }
       }
       case "green": {
-        return "#4caf50"
+        return {
+          background: "#4caf50",
+          color: "white"
+        }
       }
       case "lightGreen": {
-        return "#8bc34a"
+        return {
+          background: "#8bc34a",
+          color: "white"
+        }
       }
-      default: return "#ffffff"
+      default: return {
+        background: "#ffffff",
+        color: "black"
+      }
     }
   }
 
   return (
     <div className={s.board}>
       <Link to={"board/" + props.name} style={{textDecoration: "none"}}>
-        <Button variant="contained" style={{maxWidth: '300px', maxHeight: '200px', minWidth: '300px', minHeight: '200px', background: color()}}>
+        <Button variant="contained" style={{maxWidth: '300px', maxHeight: '200px', minWidth: '300px', minHeight: '200px', background: colors(props.color).background, color: colors(props.color).color}}>
           {props.name}
         </Button>
       </Link>

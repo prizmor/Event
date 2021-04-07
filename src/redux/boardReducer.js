@@ -61,12 +61,14 @@ export let createBoard = (data) => (dispatch) => {
           {
             id: "1",
             text: "Создать настройки задания",
-            description: ""
+            description: "",
+            tags: []
           },
           {
             id: "2",
             text: "Равным образом консультация с",
-            description: ""
+            description: "",
+            tags: []
           },
           {
             id: "3",
@@ -85,7 +87,8 @@ export let createBoard = (data) => (dispatch) => {
                 performed: false,
                 content: "Равным образом"
               }
-            ]
+            ],
+            tags: []
           }
         ]
       },
@@ -94,17 +97,29 @@ export let createBoard = (data) => (dispatch) => {
           {
             id: "4",
             text: "Дорогие друзья, начало повседневной работы по формированию позиции позволяет выполнить важнейшие задания по разработке направлений прогрессивного развития!",
-            description: ""
+            description: "",
+            tags: []
           },
           {
             id: "5",
             text: "Практический опыт показывает, что курс на социально-ориентированный национальный проект обеспечивает широкому кругу специалистов участие в формировании дальнейших направлений развития проекта",
-            description: ""
+            description: "",
+            tags: []
           },
           {
             id: "6",
             text: "Задача организации, в особенности же новая модель организационной деятельности в значительной степени обуславливает создание модели развития",
-            description: ""
+            description: "",
+            tags: [
+              {
+                color: "green",
+                text: "срочно"
+              },
+              {
+                color: "green",
+                text: "очень срочно"
+              }
+            ]
           }
         ]
       }
@@ -141,9 +156,22 @@ export let setSettings = (value, name) => (dispatch) => {
 }
 
 export let setDescription = (board, column, index, text) => (dispatch) =>{
-  debugger
   let Board = get(board.name)
   Board.stages[column].task[index].description = text
+  set(board.name, Board);
+  dispatch(setBoard(Board))
+}
+
+export let setTag = (board, column, index, tag) => (dispatch)=> {
+  let Board = get(board.name)
+  Board.stages[column].task[index].tags.push(tag)
+  set(board.name, Board);
+  dispatch(setBoard(Board))
+}
+
+export let deleteTag = (board, column, index, indexTag) => (dispatch)=> {
+  let Board = get(board.name)
+  Board.stages[column].task[index].tags.splice(indexTag, 1)
   set(board.name, Board);
   dispatch(setBoard(Board))
 }

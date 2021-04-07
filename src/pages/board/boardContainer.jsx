@@ -3,8 +3,9 @@ import { withRouter } from "react-router";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import Board from "./board";
-import {SetBoard, setDescription, setSettings} from "../../redux/boardReducer";
+import {deleteTag, SetBoard, setDescription, setSettings, setTag} from "../../redux/boardReducer";
 import {useHistory} from "react-router-dom";
+import colum from "./components/colum";
 
 let BoardContainer = (props) => {
 
@@ -23,8 +24,20 @@ let BoardContainer = (props) => {
     props.setDescription(props.board, column, index, text)
   }
 
+  let onSubmitTags = (data, index, column) => {
+    data = {
+      text: data.text,
+      color: data.color
+    }
+    props.setTag(props.board, column, index, data)
+  }
+
+  let deleteTag = (column, index, indexTag) => {
+    props.deleteTag(props.board, column, index, indexTag)
+  }
+
   return(
-    <Board board={props.board} names={props.names} onSubmitDescription={onSubmitDescription} onSubmitSettings={onSubmitSettings} />
+    <Board board={props.board} names={props.names} onSubmitTags={onSubmitTags} deleteTag={deleteTag} onSubmitDescription={onSubmitDescription} onSubmitSettings={onSubmitSettings} />
     )
 }
 
@@ -38,5 +51,5 @@ let mapStateToProps = (state) => {
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, {SetBoard, setSettings, setDescription})
+  connect(mapStateToProps, {SetBoard, setSettings, setDescription, setTag, deleteTag})
 )(BoardContainer)
