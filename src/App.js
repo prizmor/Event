@@ -9,39 +9,39 @@ import {connect} from "react-redux";
 import {initApp} from "./redux/boardReducer";
 import BoardContainer from "./pages/board/boardContainer";
 
-class App extends React.Component  {
+class App extends React.Component {
 
-  componentDidMount() {
-    this.props.initApp()
-  }
-
-  render() {
-
-    if (!this.props.init){
-      return <div></div>
+    componentDidMount() {
+        this.props.initApp()
     }
 
-    return (
-      <BrowserRouter>
-        <div>
-          <div className={s.header} >
-            <HeaderContainer />
-          </div>
-          <div className={s.main}>
-            <Route exact path={'/'} component={() => <HomeContainer />} />
-            <Route exact path={'/createBoard'} component={() => <CreateBoardContainer />} />
-            <Route exact path={'/board/:name?'} component={() => <BoardContainer />} />
-          </div>
-        </div>
-      </BrowserRouter>
-    );
-  }
+    render() {
+
+        if (!this.props.init) {
+            return <div></div>
+        }
+
+        return (
+            <BrowserRouter>
+                <div>
+                    <div className={s.header}>
+                        <HeaderContainer/>
+                    </div>
+                    <div className={s.main}>
+                        <Route exact path={'/'} component={() => <HomeContainer/>}/>
+                        <Route exact path={'/createBoard'} component={() => <CreateBoardContainer/>}/>
+                        <Route exact path={'/board/:name?'} component={() => <BoardContainer/>}/>
+                    </div>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    init: state.Board.initApp
-  }
+    return {
+        init: state.Board.initApp
+    }
 }
 
 export default connect(mapStateToProps, {initApp})(App);

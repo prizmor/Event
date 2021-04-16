@@ -1,19 +1,16 @@
 import React, {useState} from "react";
-import s from "./../board.module.scss"
+import s from './../board.module.scss';
+import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import {grey} from "@material-ui/core/colors";
-import IconButton from "@material-ui/core/IconButton";
 
-let Tag = (props) => {
-
+let ItemCheckList = (props) => {
     return (
-        <div style={props.color} className={s.tag}>
-            <div className={s.textTag}>
-                {props.text}
-            </div>
+        <div className={s.itemCheckList}>
+            <div className={s.textItemCheckList}>{props.text}</div>
             <div className={s.closeTag}>
                 <IconButton onClick={() => {
-                    props.delete(props.index)
+                    props.deleteItemCheckList(props.index)
                 }} size={"small"} aria-label="upload picture" component="span">
                     <CloseIcon style={{color: grey[900], width: "10px", height: "10px"}}/>
                 </IconButton>
@@ -22,4 +19,4 @@ let Tag = (props) => {
     )
 }
 
-export default Tag
+export default ItemCheckList

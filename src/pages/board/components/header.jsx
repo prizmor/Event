@@ -7,21 +7,21 @@ import IconButton from "@material-ui/core/IconButton";
 let Header = ({name, openSettings}) => {
 
 
-
-  return (
-    <div className={s.header}>
-      <div className={s.name}>
+    return (
+        <div className={s.header}>
+            <div className={s.name}>
         <span>
           {name}
         </span>
-      </div>
-      <div className={s.settingsButton}>
-        <IconButton onClick={() => openSettings(true) } size={"small"} aria-label="upload picture" component="span">
-          <SettingsIcon style={{ color: grey[50] }} />
-        </IconButton>
-      </div>
-    </div>
-  )
+            </div>
+            <div className={s.settingsButton}>
+                <IconButton onClick={() => openSettings(true)} size={"small"} aria-label="upload picture"
+                            component="span">
+                    <SettingsIcon style={{color: grey[50]}}/>
+                </IconButton>
+            </div>
+        </div>
+    )
 };
 
 export default Header;

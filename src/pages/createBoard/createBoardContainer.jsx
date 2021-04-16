@@ -6,28 +6,28 @@ import {useHistory} from "react-router-dom";
 
 let CreateBoardContainer = (props) => {
 
-  const history = useHistory();
+    const history = useHistory();
 
-  let submit = (data) => {
+    let submit = (data) => {
 
-    let dataBoard = {...data}
+        let dataBoard = {...data}
 
-    if (dataBoard.color === null) {
-      dataBoard.color = "white"
+        if (dataBoard.color === null) {
+            dataBoard.color = "white"
+        }
+        props.createBoard(dataBoard)
+        history.push('/')
     }
-    props.createBoard(dataBoard)
-    history.push('/')
-  }
 
-  return (
-    <CreateBoard {...props} submit={submit} />
-  );
+    return (
+        <CreateBoard {...props} submit={submit}/>
+    );
 };
 
-let mapStateToProps = (state) =>{
-  return {
-    boards: state.Board.PresentBoards
-  }
+let mapStateToProps = (state) => {
+    return {
+        boards: state.Board.PresentBoards
+    }
 };
 
-export default connect(mapStateToProps, { createBoard })(CreateBoardContainer);
+export default connect(mapStateToProps, {createBoard})(CreateBoardContainer);

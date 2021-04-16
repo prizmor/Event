@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import Board from "./boardReducer";
 
 let reducers = combineReducers({
-  Board: Board
+    Board: Board
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

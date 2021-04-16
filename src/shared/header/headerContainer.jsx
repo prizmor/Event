@@ -5,15 +5,13 @@ import Header from './header';
 let HeaderContainer = (props) => {
 
 
-  return (
-    <Header props={props} />
-  );
+    return (
+        <Header props={props}/>
+    );
 };
 
-let mapStateToProps = (state) =>{
-  return {
-
-  }
+let mapStateToProps = (state) => {
+    return {}
 };
 
 export default connect(mapStateToProps, {})(HeaderContainer);

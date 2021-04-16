@@ -15,12 +15,12 @@ let Description = (props) => {
             </h2>
             <form onSubmit={handleSubmit(props.submit)}>
                 <TextField
-                    inputRef={register({maxLength: "750" })}
+                    inputRef={register({maxLength: "1000"})}
                     label={"Описание"}
                     name={"description"}
                     multiline
                     error={errors.description}
-                    rows={6}
+                    rows={12}
                     style={{width: "750px"}}
                     defaultValue={props.description}
                     variant={"filled"}

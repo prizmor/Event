@@ -2,26 +2,25 @@ import React from 'react';
 import {connect} from "react-redux";
 import Home from './home';
 
-class HomeContainer extends React.Component{
+class HomeContainer extends React.Component {
 
-  componentDidMount() {
+    componentDidMount() {
 
-  }
+    }
 
-  render() {
-      return (
-        <Home {...this.props} />
-      );
-  };
+    render() {
+        return (
+            <Home {...this.props} />
+        );
+    };
 }
 
 
+let mapStateToProps = (state) => {
 
-let mapStateToProps = (state) =>{
-
-  return {
-    boards: state.Board.PresentBoards.boards,
-  }
+    return {
+        boards: state.Board.PresentBoards.boards,
+    }
 };
 
 export default connect(mapStateToProps, {})(HomeContainer);

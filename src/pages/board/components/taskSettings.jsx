@@ -31,35 +31,60 @@ let TaskSettings = (props) => {
         props.deleteTag(props.taskSettings.column, props.taskSettings.index, index)
     }
 
+    let deleteItemCheckList = (index) => {
+        props.deleteItemCheckList(props.taskSettings.column, props.taskSettings.index, index)
+    }
+
+    let onSubmitTime = (data) => {
+        props.onSubmitTime(props.taskSettings.column, props.taskSettings.index, data)
+    }
+
+    let onSubmitItemCheckList = (text) => {
+        props.onSubmitItemCheckList(props.taskSettings.column, props.taskSettings.index, text.text)
+    }
+
+    let actionCheckList = (index, performed) => {
+        props.actionCheckList(props.taskSettings.column, props.taskSettings.index, index, !performed)
+    }
+
     return (
         <div className={s.taskSettings}>
             <div className={s.windowSettings}>
                 <div className={s.workspace}>
                     <div className={s.content}>
-                        <span className={s.text}>
+                        {page === "home" && <span className={s.text}>
                             {state.text}
-                        </span>
+                        </span>}
                         <div className={s.mainContent}>
-                            {page === "home" && <Home task={state} color={props.color} setPage={setPage} />}
-                            {page === "tags" && <Tags deleteTag={deleteTag} onSubmit={onSubmitTags} tags={state.tags} color={props.color} />}
-                            {page === "checkList" && <CheckList />}
-                            {page === "time" && <Time />}
-                            {page === "description" && <Description submit={onSubmitDescription} description={state.description} />}
+                            {page === "home" && <Home task={state} color={props.color} setPage={setPage} colorStatusCheckList={props.colorStatusCheckList} action={actionCheckList}/>}
+                            {page === "tags" &&
+                            <Tags deleteTag={deleteTag} onSubmit={onSubmitTags} tags={state.tags} color={props.color}/>}
+                            {page === "checkList" && <CheckList items={state.checkList} deleteItemCheckList={deleteItemCheckList} onSubmitItemCheckList={onSubmitItemCheckList}/>}
+                            {page === "time" && <Time submit={onSubmitTime} time={state.time}/>}
+                            {page === "description" &&
+                            <Description submit={onSubmitDescription} description={state.description}/>}
                         </div>
                     </div>
                     <div className={s.nav}>
                         <div className={s.close}>
-                            <IconButton onClick={() => props.setTaskSettings({windowOpen: false, IdTask: ""}) } size={"small"} aria-label="upload picture" component="span">
-                                <CloseIcon style={{ color: grey[900] }} />
+                            <IconButton onClick={() => props.setTaskSettings({windowOpen: false, IdTask: ""})}
+                                        size={"small"} aria-label="upload picture" component="span">
+                                <CloseIcon style={{color: grey[900]}}/>
                             </IconButton>
                         </div>
                         <div className={s.bookmarks}>
-                            <div><Button onClick={() => setPage("home")} style={{width: "168px", borderRadius: "none"}}>Главная</Button></div>
-                            <div><Button onClick={() => setPage("tags")} style={{width: "168px", borderRadius: "none"}}>Теги</Button></div>
-                            <div><Button onClick={() => setPage("checkList")} style={{width: "168px", borderRadius: "none"}}>Чеклист</Button></div>
-                            <div><Button onClick={() => setPage("time")} style={{width: "168px", borderRadius: "none"}}>Время</Button></div>
-                            <div><Button onClick={() => setPage("description")} style={{width: "168px", borderRadius: "none"}}>Описание</Button></div>
-                            <div className={s.delete}><Button style={{width: "168px", borderRadius: "none"}} color="secondary">Удалить</Button></div>
+                            <div><Button onClick={() => setPage("home")}
+                                         style={{width: "168px", borderRadius: "none"}}>Главная</Button></div>
+                            <div><Button onClick={() => setPage("tags")}
+                                         style={{width: "168px", borderRadius: "none"}}>Теги</Button></div>
+                            <div><Button onClick={() => setPage("checkList")}
+                                         style={{width: "168px", borderRadius: "none"}}>Чеклист</Button></div>
+                            <div><Button onClick={() => setPage("time")}
+                                         style={{width: "168px", borderRadius: "none"}}>Время</Button></div>
+                            <div><Button onClick={() => setPage("description")}
+                                         style={{width: "168px", borderRadius: "none"}}>Описание</Button></div>
+                            <div className={s.delete}><Button style={{width: "168px", borderRadius: "none"}}
+                                                              color="secondary">Удалить</Button></div>
                         </div>
                     </div>
                 </div>

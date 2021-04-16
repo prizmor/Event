@@ -10,27 +10,27 @@ import {useDrop} from "react-dnd";
 let Column = (props) => {
 
 
-
     return (
-      <div className={s.column}>
-        <div className={s.wrapper}>
-          <header className={s.headerColumn}>
-            <div className={s.name}>{props.name}</div>
-            <div>
-              <IconButton className={s.delete} size={"small"} aria-label="upload picture" component="span">
-                <CloseIcon style={{ color: grey[900] }} />
-              </IconButton>
+        <div className={s.column}>
+            <div className={s.wrapper}>
+                <header className={s.headerColumn}>
+                    <div className={s.name}>{props.name}</div>
+                    <div>
+                        <IconButton className={s.delete} size={"small"} aria-label="upload picture" component="span">
+                            <CloseIcon style={{color: grey[900]}}/>
+                        </IconButton>
+                    </div>
+                </header>
+                <div className={s.body}>
+                    {props.data.task.map((data, index) => {
+                        return (
+                            <Task setTaskSettings={props.setTaskSettings} text={data.text} id={data.id} key={data.id}
+                                  index={index} columnName={props.name}/>
+                        )
+                    })}
+                </div>
             </div>
-          </header>
-          <div className={s.body}>
-            {props.data.task.map((data, index) => {
-              return(
-                <Task setTaskSettings={props.setTaskSettings} text={data.text} id={data.id} key={data.id} index={index} columnName={props.name} />
-              )
-            })}
-          </div>
         </div>
-      </div>
     )
 }
 

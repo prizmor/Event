@@ -1,16 +1,18 @@
-.topBar{
+.topBar {
   width: 100vw;
   background: #6200E8;
   height: 48px;
   display: flex;
   justify-content: space-between;
-  .logo{
+
+  .logo {
     height: 48px;
     width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-    span{
+
+    span {
       color: rgba(255, 255, 255, 0.9);
       font-size: 35px;
     }
